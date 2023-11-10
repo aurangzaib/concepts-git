@@ -1,0 +1,27 @@
+#!/bin/sh
+
+#  Description:
+#  This hook runs before
+#  - Commit
+#
+#  Modifications:
+#  Date      Vers.  Comment                                                     Name
+#  ---------------------------------------------------------------------------------------
+#  22.07.22  01.00  Created												        Siddiqui
+#  ---------------------------------------------------------------------------------------
+
+# ==========================================================================================================
+# Preparation
+# ==========================================================================================================
+
+# Commit Hash File
+commit_hash_file=Githooks/commit.hash
+
+# ==========================================================================================================
+# Commit Hash Save
+# ==========================================================================================================
+
+# Hash is needed to avoid updating submodules when files are reverted
+# Save the current commit hash
+pre_commit_hash=`git rev-parse --short HEAD`
+echo "$pre_commit_hash" > $commit_hash_file
