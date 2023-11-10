@@ -17,4 +17,4 @@ git clone https://github.com/aurangzaib/concepts-git
 git clone https://github.com/aurangzaib/concepts-git --branch master
 
 # Clone single branch
-git clone https://github.com/aurangzaib/concepts-git --single-branch master
+git clone https://github.com/aurangzaib/concepts-git --branch develop --single-branch
