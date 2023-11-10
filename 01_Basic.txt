@@ -1,0 +1,20 @@
+==========================================================================================================
+Tools
+==========================================================================================================
+VSCode              Code Editor and Git Control
+Git Graph           Visual Branches and Commit
+Git History         File History
+Git Lens            Line History
+
+==========================================================================================================
+Clone
+==========================================================================================================
+
+# Clone full repo with default branch
+git clone https://github.com/aurangzaib/concepts-git
+
+# Clone full repo with a branch
+git clone https://github.com/aurangzaib/concepts-git --branch master
+
+# Clone single branch
+git clone https://github.com/aurangzaib/concepts-git --single-branch master
