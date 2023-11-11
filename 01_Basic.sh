@@ -4,7 +4,8 @@
 #  Modifications:
 #  Date      Vers.  Comment                                                     Name
 #  ---------------------------------------------------------------------------------------
-#  10.11.23  01.00  Created												        Siddiqui
+#  07.06.22  01.00  Created												        Siddiqui
+#  11.11.23  01.00  Updated												        Siddiqui
 #  ---------------------------------------------------------------------------------------
 
 # ==========================================================================================================
@@ -22,12 +23,18 @@
 
 # Clone full repo with default branch
 git clone https://github.com/aurangzaib/concepts-git
+git submodule update --init
 
 # Clone full repo with a branch
 git clone https://github.com/aurangzaib/concepts-git --branch master
 
 # Clone single branch
 git clone https://github.com/aurangzaib/concepts-git --branch develop --single-branch
+
+# ==========================================================================================================
+# Initiaize
+# ==========================================================================================================
+git init # Initialize empty git repository
 
 # ==========================================================================================================
 # Fetch
