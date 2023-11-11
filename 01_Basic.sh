@@ -10,7 +10,8 @@
 # ==========================================================================================================
 # Tools
 # ==========================================================================================================
-# VSCode        Editor and Git
+# VSCode        Code Editor and Git Client
+# Source Tree   Git Client
 # Git Graph     Visual Branches and Commit
 # Git History   File History
 # Git Lens      Line History
