@@ -1,0 +1,51 @@
+#!/bin/sh
+
+#  Description:
+#  When number of unstaged files have changed before and after submodules update
+#  Show warning and abort a commit
+#
+#  Note:
+#  This hook is currently NOT IN USE
+#
+#  Modifications:
+#  Date      Vers.  Comment                                                     Name
+#  ---------------------------------------------------------------------------------------
+#  24.08.23  01.00  Created												      Siddiqui
+#  ---------------------------------------------------------------------------------------
+
+# ==========================================================================================================
+# Abort in case of unstaged submodules
+# ==========================================================================================================
+
+# Count number on unstaged changed files
+pre_unstaged="$(git --no-pager diff --shortstat)"
+
+# Perform submodule updates only when unstage files are present
+if [ "$pre_unstaged" != 0 ]; then
+
+    # Update all submodules
+    git submodule update --init
+
+    # Count number on unstaged changed files
+    post_unstaged="$(git --no-pager diff --shortstat)"
+
+    # Abort commit when unstaged files count has changed
+    if [ "$post_unstaged" != "$pre_unstaged" ]; then
+        echo
+        echo
+        echo
+        echo "======================       !! W A R N I N G !!       ==================="   # DO NOT CHANGE FORMATTING
+        echo
+        echo "PROBLEM:"
+        echo "One or more new submodules have been added."
+        echo 
+        echo "SOLUTION:"
+        echo "Please add submodules to your commit. Then commit again."
+        echo
+        echo "=========================================================="                   # DO NOT CHANGE FORMATTING
+        echo
+        echo
+        echo
+        exit 1
+    fi 
+fi

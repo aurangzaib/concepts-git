@@ -1,0 +1,79 @@
+#!/bin/sh
+
+#  Description:
+#  This hook runs after:
+#  - Merge
+#  - Pull
+#
+#  Modifications:
+#  Date      Vers.  Comment                                                     Name
+#  ---------------------------------------------------------------------------------------
+#  22.07.22  01.00  Created												      Siddiqui
+#  ---------------------------------------------------------------------------------------
+
+# ==========================================================================================================
+# Preparation
+# ==========================================================================================================
+
+# Commit Hash File
+commit_hash_file=Githooks/commit.hash
+
+# Info 
+echo ""
+echo "------ Git Post Merge Hook --------"
+echo ""
+echo "- This hook runs after a pull on a repository"
+
+# ==========================================================================================================
+# Commit Hash Save
+# ==========================================================================================================
+
+# Hash is needed to avoid updating submodules when files are reverted
+# save the current commit hash
+pre_commit_hash=`git rev-parse --short HEAD`
+echo "$pre_commit_hash" > $commit_hash_file
+
+# ==========================================================================================================
+# Git Commit Default Message
+# ==========================================================================================================
+
+# Start of operation
+echo "- Git Commit Default Message: Setting up ..."
+
+# Setup default git message template globally
+git config --global commit.template .gitmessage
+
+# End of operation
+echo "- Git Commit Default Message: Done"
+
+# ==========================================================================================================
+# Submodule Update
+# ==========================================================================================================
+
+# Start of operation
+echo "- Submodule Update: Downloading ..."
+
+# Update all submodules
+git submodule update --init
+
+# End of operation
+echo "- Submodule Update: Done"
+
+# ==========================================================================================================
+# Run Batch
+# ==========================================================================================================
+
+# Start of operation
+echo "- Batch: Setting up ..."
+
+# Current Working Directory
+cwd=$(PWD)
+
+# Filename
+batch="/batch.bat"
+
+# End of operation
+echo "- Batch: Done"
+
+# Run setRevision.bat file
+$cwd$batch

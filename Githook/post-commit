@@ -1,0 +1,70 @@
+#!/bin/sh
+
+#  Description:
+#  This hook runs after
+#  - Commit
+#
+#  Modifications:
+#  Date      Vers.  Comment                                                     Name
+#  ---------------------------------------------------------------------------------------
+#  22.07.22  01.00  Created												      Siddiqui
+#  24.08.23  01.01  Handle merge conflict side-effect                         Siddiqui  
+#  ---------------------------------------------------------------------------------------
+
+# ==========================================================================================================
+# Preparation
+# ==========================================================================================================
+
+# Commit Hash File
+commit_hash_file=Githooks/commit.hash
+
+# Info 
+echo ""
+echo "------ Git Post Commit Hook --------"
+echo ""
+echo "- This hook runs after changes are committed to a repository"
+
+# ==========================================================================================================
+# Commit Hash Save
+# ==========================================================================================================
+
+# Hash is needed to avoid updating submodules when files are reverted
+# Save current hash
+commit_hash=`git rev-parse --short HEAD`
+echo "$commit_hash" > $commit_hash_file
+
+# ==========================================================================================================
+# Submodule Update
+# ==========================================================================================================
+
+# Note: Handling side-effect of merge conflict 
+# Note: Submodule update is necessary because...
+#       post-merge hook does not run in case of merge conflict
+
+# Start of operation
+echo "- Submodule Update: Downloading ..."
+
+# Update all submodules
+git submodule update --init
+
+# End of operation
+echo "- Submodule Update: Done"
+
+# ==========================================================================================================
+# Run Batch
+# ==========================================================================================================
+
+# Start of operation
+echo "- Batch: Setting up ..."
+
+# Current Working Directory
+cwd=$(PWD)
+
+# Filename
+batch="/batch.bat"
+
+# End of operation
+echo "- Batch: Done"
+
+# Run setRevision.bat file
+$cwd$batch
