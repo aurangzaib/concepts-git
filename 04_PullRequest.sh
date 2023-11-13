@@ -18,15 +18,14 @@
 #   3- Create and approve PR in parent project
 
 # Steps:
-#   01- Submodule:    Pull develop into PR branch
-#   02- Submodule:    Push changes to the PR branch
-#   03- Submodule:    Create PR
-#   04- Parent:       Create branch from develop
-#   05- Parent:       Checkout submodule PR branch
-#   06- Parent:       Push updated hash to PR branch
-#   07- Parent:       Test submodule PR
-#   08- Submodule:    Until PR is approved, merge develop in PR branch regularly
-#   09- Submodule:    Approve PR
-#   10- Parent:       Push updated hash to PR branch
-#   11- Parent:       Create PR
-#   12- Parent:       Approve PR
+#   01- Submodule:    Merge develop into PR branch
+#   02- Submodule:    Create PR
+#   03- Parent:       Create branch from develop
+#   04- Parent:       Checkout submodule PR branch
+#   05- Parent:       Push updated hash to PR branch
+#   06- Parent:       Test submodule PR
+#   07- Submodule:    Until PR is approved, merge develop in PR branch regularly
+#   08- Submodule:    Approve PR
+#   09- Parent:       Push updated hash to PR branch
+#   10- Parent:       Create PR
+#   11- Parent:       Approve PR

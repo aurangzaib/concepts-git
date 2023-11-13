@@ -30,7 +30,7 @@
 # - Revert
 
 # ----------------------------------------------------
-# post-merge       - DOES NOT RUN AFTER MERGE CONFLICT
+# post-merge      IT DOES NOT RUN AFTER MERGE CONFLICT
 # ----------------------------------------------------
 # - Merge
 # - Pull

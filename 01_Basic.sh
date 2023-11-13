@@ -11,11 +11,11 @@
 # ==========================================================================================================
 # Tools
 # ==========================================================================================================
-# VSCode        Code Editor and Git Client
-# Source Tree   Git Client
-# Git Graph     Visual Branches and Commit
-# Git History   File History
-# Git Lens      Line History
+# VSCode        Code editor and git client
+# Git Graph     Visual branches and Commit
+# Git History   File history
+# Git Lens      Line history
+# Source Tree   Git client (optional)
 
 # ==========================================================================================================
 # Clone
@@ -25,10 +25,10 @@
 git clone https://github.com/aurangzaib/concepts-git
 git submodule update --init
 
-# Clone full repo with a branch
-git clone https://github.com/aurangzaib/concepts-git --branch master
+# Clone full repo with specific branch
+git clone https://github.com/aurangzaib/concepts-git --branch develop
 
-# Clone single branch
+# Clone single specific branch
 git clone https://github.com/aurangzaib/concepts-git --branch develop --single-branch
 
 # ==========================================================================================================
@@ -53,9 +53,9 @@ git pull
 # ==========================================================================================================
 
 # Default checkout
-git checkout develop --force
+git checkout develop
 
-# Force checkout by overwritting untracked files
+# Force checkout by removing untracked files
 git checkout develop --force
 
 # ==========================================================================================================
@@ -95,21 +95,18 @@ git commit --amend
 git push --force-with-lease origin
 
 # ==========================================================================================================
-# Merge
-# ==========================================================================================================
-
-# ==========================================================================================================
 # Merge Fast-Forward
 # ==========================================================================================================
 
-# Point the BranchA (behind) to BranchB (ahead)
+# Use VSCode
+# Point BranchA (behind) to BranchB (ahead)
 # This works only when BranchA has not diverged from BranchB
 # https://www.atlassian.com/git/tutorials/using-branches/git-merge
-# Use VSCode
 
 # ==========================================================================================================
 # Merge Conflicts
 # ==========================================================================================================
+# Use VSCode
 
 # ==========================================================================================================
 # Clean
@@ -121,17 +118,18 @@ git clean -fd -x
 # Remove Lock
 # ==========================================================================================================
 
-rm -rf ~/repo/.git/index.lock
+taskkill /F /IM git.exe         # Kill all git tasks
+rm -rf ~/repo/.git/index.lock   # Delete lock file
 
 # ==========================================================================================================
-# Default Git Message
+# Git Message
 # ==========================================================================================================
 
 # File:     .gitmessage in the repository
-# Content:  Any default commit message
+# Content:  Default commit message
 
-# Local for a repository
+# For single repository (Local)
 git config commit.template .gitmessage
 
-# Global for all repositories
+# For all repositories (Global)
 git config --global commit.template .gitmessage
