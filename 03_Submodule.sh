@@ -38,13 +38,7 @@ git submodule init
 # Update
 # ==========================================================================================================
 
-git submodule update --init
-
-# ==========================================================================================================
-# Update Recursive
-# ==========================================================================================================
-
-git submodule update --init --recursive # Submodule inside submodule
+git submodule update --init --recursive
 
 # ==========================================================================================================
 # Status
@@ -75,7 +69,7 @@ git submodule add -f submodule-url
 # Rename
 # ==========================================================================================================
 
-# Renaming an already added submodule is not posssilbe
+# Renaming an already added submodule is not possible
 # Re-add submodule with a new name - NOT recommended
 
 # ==========================================================================================================
