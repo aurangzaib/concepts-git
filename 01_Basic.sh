@@ -133,3 +133,14 @@ git config commit.template .gitmessage
 
 # For all repositories (Global)
 git config --global commit.template .gitmessage
+
+# ==========================================================================================================
+# Detached Branch
+# ==========================================================================================================
+
+# Link: https://stackoverflow.com/a/9984260
+
+# See list of commits in the detached branch
+git reflog 
+# Checkout the required commit
+git checkout ba5a739
