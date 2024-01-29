@@ -5,7 +5,7 @@
 #  Date      Vers.  Comment                                                     Name
 #  ---------------------------------------------------------------------------------------
 #  07.06.22  01.00  Created												        Siddiqui
-#  11.11.23  01.00  Updated												        Siddiqui
+#  11.11.23  02.00  Updated												        Siddiqui
 #  ---------------------------------------------------------------------------------------
 
 # ==========================================================================================================
@@ -142,5 +142,6 @@ git config --global commit.template .gitmessage
 
 # See list of commits in the detached branch
 git reflog 
+
 # Checkout the required commit
 git checkout ba5a739
