@@ -1,92 +1,104 @@
 #!/bin/sh
-
+ 
+#  Copyright: 2022 KRONES AG
+#
 #  Description:
-#  This hook runs after:
-#  - Clone
-#  - Checkout
-#  - Revert
+#  This hook runs after clone/checkout/revert a repository
 #
 #  Modifications:
 #  Date      Vers.  Comment                                                     Name
 #  ---------------------------------------------------------------------------------------
-#  22.07.22  01.00  Created												      Siddiqui
+#  22.07.22  01.00  Created                                                     Siddiqui
+#  25.01.24  01.01  Clean uncommited changes on checkout                        Siddiqui
 #  ---------------------------------------------------------------------------------------
-
-# ==========================================================================================================
-# Preparation
-# ==========================================================================================================
-
+ 
+############### Preparation ###############
+ 
 # Commit Hash File
 commit_hash_file=Githooks/commit.hash
-
+ 
 # Info 
 echo ""
 echo "------ Git Post Checkout Hook --------"
 echo ""
 echo "- This hook runs after clone/checkout a repository"
-
-# ==========================================================================================================
-# Commit Hash Comparison
-# ==========================================================================================================
-
+ 
+############### Commit Hash Comparison ###############
+ 
 # Get hash before and after commit
 if test -f "$commit_hash_file"; then
     pre_commit_hash=`cat $commit_hash_file`
 fi
-
+ 
 # Save current hash
 post_commit_hash=`git rev-parse --short HEAD`
 echo "$post_commit_hash" > $commit_hash_file
-
+ 
 # Print the hashes
 echo "- Pre-Hash:  $pre_commit_hash"
 echo "- Post-Hook: $post_commit_hash"
-
-# Perform submodule/revision updates only on clone/checkout
+ 
+# Perform these changes only on clone and checkout
 if [ "$pre_commit_hash" == "" ] || [ "$pre_commit_hash" != "$post_commit_hash"  ]; then
-
-    # ==========================================================================================================
-    # Git Commit Default Message
-    # ==========================================================================================================
-
+ 
+    ############### Git Commit Default Message ###############
+ 
     # Start of operation
     echo "- Git Commit Default Message: Setting up ..."
-
+ 
     # Setup default git message template globally
     git config --global commit.template .gitmessage
-
+ 
     # End of operation
     echo "- Git Commit Default Message: Done"
-
-    # ==========================================================================================================
-    # Submodule Update
-    # ==========================================================================================================
-
+ 
+    ############### Clean working copy ###############
+ 
+    # Perform these changes only on checkout
+    if [ "$pre_commit_hash" != "" ]; then
+        
+        # Start of operation
+        echo "- Clean uncommited changes: Setting up ..."
+        
+        # Enter Logical folder
+        cd "Logical"
+        
+        # Delete untracked files/folders
+        git clean -fdx
+        
+        # Go back to root
+        cd ".."
+        
+        # End of operation
+        echo "- Clean uncommited changes: Done"
+ 
+    fi
+ 
+    ############### Submodule Update ###############
+ 
     # Start of operation
     echo "- Submodule Update: Downloading ..."
-
+ 
     # Update all submodules
     git submodule update --init
-
+ 
     # End of operation
     echo "- Submodule Update: Done"
-
-    # ==========================================================================================================
-    # Run Batch
-    # ==========================================================================================================
-
+ 
+    ############### setRevision Batch ###############
+ 
     # Start of operation
-    echo "- Batch: Setting up ..."
-
+    echo "- SetRevision: Setting up ..."
+ 
     # Current Working Directory
-    cwd=$(PWD)
-
+    currentDirectory=$(PWD)
+ 
     # Filename
-    batch="/batch.bat"
-
+    setRevision="/setRevision.bat"
+ 
     # End of operation
-    echo "- Batch: Done"
-
+    echo "- SetRevision: Done"
+ 
     # Run setRevision.bat file
-    $cwd$batch
+    $currentDirectory$setRevision
 fi

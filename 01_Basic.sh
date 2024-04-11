@@ -5,7 +5,7 @@
 #  Date      Vers.  Comment                                                     Name
 #  ---------------------------------------------------------------------------------------
 #  07.06.22  01.00  Created												        Siddiqui
-#  11.11.23  01.00  Updated												        Siddiqui
+#  11.11.23  02.00  Updated												        Siddiqui
 #  ---------------------------------------------------------------------------------------
 
 # ==========================================================================================================
@@ -139,3 +139,15 @@ git config commit.template .gitmessage
 
 # For all repositories (Global)
 git config --global commit.template .gitmessage
+
+# ==========================================================================================================
+# Detached Branch
+# ==========================================================================================================
+
+# Link: https://stackoverflow.com/a/9984260
+
+# See list of commits in the detached branch
+git reflog 
+
+# Checkout the required commit
+git checkout ba5a739
