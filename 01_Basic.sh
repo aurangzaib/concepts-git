@@ -11,11 +11,11 @@
 # ==========================================================================================================
 # Tools
 # ==========================================================================================================
-# VSCode        Code editor and git client
-# Git Graph     Visual branches and Commit
-# Git History   File history
-# Git Lens      Line history
-# Source Tree   Git client (optional)
+# VSCode                Code editor and git client
+# VSCode Git Graph      Visual branches and Commit
+# VSCode Git History    File history
+# VSCode Git Lens       Line history
+# Source Tree           Git client (optional)
 
 # ==========================================================================================================
 # Configuration
